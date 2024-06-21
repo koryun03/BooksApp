@@ -10,6 +10,10 @@ namespace BooksApp.Infrastructure.EntityTypeConfigurations
         {
             builder.HasKey(b => b.Id);
             builder.HasIndex(b => b.Id).IsUnique();
+
+            builder.HasOne(p => p.Author)
+                .WithMany(p => p.Books).HasForeignKey(m => m.AuthorId).OnDelete(DeleteBehavior.Cascade);
+
         }
 
     }

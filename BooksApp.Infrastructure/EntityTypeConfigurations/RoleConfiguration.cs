@@ -9,7 +9,6 @@ namespace BooksApp.Infrastructure.EntityTypeConfigurations
     {
         public void Configure(EntityTypeBuilder<Role> builder)
         {
-            builder.ToTable("Roles");
             builder.HasKey(k => k.Id);
             builder.HasData(
                 new Role { Id = 1, Name = UserRoles.Admin, NormalizedName = UserRoles.Admin },

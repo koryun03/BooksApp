@@ -10,6 +10,7 @@ namespace BooksApp.Infrastructure.EntityTypeConfigurations
         {
             builder.HasKey(a => a.Id);
             builder.HasIndex(a => a.Id).IsUnique();
+
         }
 
     }

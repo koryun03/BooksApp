@@ -8,7 +8,6 @@ namespace BooksApp.Infrastructure.EntityTypeConfigurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("Users");
             builder.HasKey(k => k.Id);
             builder.Property(p => p.Id).ValueGeneratedOnAdd();
             builder.Property(p => p.Name)
