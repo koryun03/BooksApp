@@ -43,15 +43,11 @@ namespace BooksApp.Application.Services
                 await _userManager.CreateAsync(currentUser);
                 await _userManager.AddToRoleAsync(currentUser, UserRoles.User);
 
-                // return "";
                 return string.Empty;
             }
             catch (Exception ex)
             {
-
-                //log anel
                 return "Error";
-
             }
         }
 
@@ -64,7 +60,6 @@ namespace BooksApp.Application.Services
             if (user == null || isValid == false)
             {
                 return new LoginResponseDto() { User = null, Token = string.Empty };
-                //return new LoginResponseDto() { User = null, Token = "" };
             }
 
             //if user was found , Generate JWT Token
