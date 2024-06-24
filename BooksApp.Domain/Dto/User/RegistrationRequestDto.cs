@@ -1,4 +1,4 @@
-﻿namespace BooksApp.Domain.Dto
+﻿namespace BooksApp.Domain.Dto.User
 {
     public class RegistrationRequestDto
     {

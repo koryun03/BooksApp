@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using BooksApp.Application.Models;
-using BooksApp.Domain.Dto;
+using BooksApp.Application.Models.User;
+using BooksApp.Domain.Dto.User;
 
 namespace BooksApp.Application.Mappings
 {

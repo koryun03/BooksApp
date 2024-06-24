@@ -1,6 +1,6 @@
 ﻿using BooksApp.Application.ServicesInterfaces;
 using BooksApp.Domain.Common.Constants;
-using BooksApp.Domain.Dto;
+using BooksApp.Domain.Dto.User;
 using BooksApp.Domain.Entities.Users;
 using Microsoft.AspNetCore.Identity;
 

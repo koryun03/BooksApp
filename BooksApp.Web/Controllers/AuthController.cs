@@ -1,16 +1,14 @@
 ﻿using AutoMapper;
-using BooksApp.Application.Models;
+using BooksApp.Application.Models.User;
 using BooksApp.Application.ServicesInterfaces;
 using BooksApp.Domain.Common.Constants;
-using BooksApp.Domain.Dto;
+using BooksApp.Domain.Dto.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BooksApp.Web.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController : ApiControllerBase
     {
         private readonly IAuthService _authService;
         private readonly IMapper _mapper;
@@ -20,7 +18,8 @@ namespace BooksApp.Web.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost("Register")]
+        [AllowAnonymous]
+        [HttpPost]
         public async Task<IActionResult> Register([FromBody] RegistrationRequestModel model)
         {
             var dto = _mapper.Map<RegistrationRequestDto>(model);
@@ -32,7 +31,8 @@ namespace BooksApp.Web.Controllers
             return Ok("Success");
         }
 
-        [HttpPost("LogIn")]
+        [AllowAnonymous]
+        [HttpPost]
         public async Task<IActionResult> Login([FromBody] LoginRequestModel model)
         {
             var dto = _mapper.Map<LoginRequestDto>(model);
@@ -47,7 +47,9 @@ namespace BooksApp.Web.Controllers
         //need to change
         #region SectionRoles 
 
-        [HttpPost("AssignRole")]
+        //[Authorize(Roles = UserRoles.Admin)]
+        [AllowAnonymous]
+        [HttpPost]
         public async Task<IActionResult> AssignRole(string email, string roleName)
         {
             var result = await _authService.AssignRole(email, roleName);
@@ -59,22 +61,21 @@ namespace BooksApp.Web.Controllers
 
         }
 
-        [Authorize]
-        [HttpGet("TestAuthroize")]
+        [HttpGet]
         public async Task<IActionResult> TestAuthroize()
         {
             return Ok("you are authorized");
         }
 
         [Authorize(Roles = UserRoles.Admin)]
-        [HttpGet("TestAdminRole")]
+        [HttpGet]
         public async Task<IActionResult> TestAdminRole()
         {
             return Ok("your role is Admin");
         }
 
         [Authorize(Roles = UserRoles.User)]
-        [HttpGet("TestUserRole")]
+        [HttpGet]
         public async Task<IActionResult> TestUserRole()
         {
             return Ok("your role is User");

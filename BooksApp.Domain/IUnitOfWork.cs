@@ -4,7 +4,9 @@ namespace BooksApp.Domain
 {
     public interface IUnitOfWork
     {
-        IAuthRepository AuthRepository { get; }
+        IAuthorRepository AuthorRepository { get; }
+        IBookRepository BookRepository { get; }
+        IPublishingHouseRepository PublishingHouseRepository { get; }
         void Save();
         Task SaveAsync();
     }

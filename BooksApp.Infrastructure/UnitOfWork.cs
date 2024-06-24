@@ -9,15 +9,27 @@ namespace BooksApp.Infrastructure
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationContext _context;
-        private IAuthRepository _authRepository;
+        private IAuthorRepository _authRepository;
+        private IBookRepository _bookRepository;
+        private IPublishingHouseRepository _publishingHouseRepository;
         public UnitOfWork(ApplicationContext context)
         {
             _context = context;
         }
 
-        public IAuthRepository AuthRepository
+        public IAuthorRepository AuthorRepository
         {
-            get { return _authRepository ?? (_authRepository = new AuthRepository(_context)); }
+            get { return _authRepository ?? (_authRepository = new AuthorRepository(_context)); }
+        }
+
+        public IBookRepository BookRepository
+        {
+            get { return _bookRepository ?? (_bookRepository = new BookRepository(_context)); }
+        }
+
+        public IPublishingHouseRepository PublishingHouseRepository
+        {
+            get { return _publishingHouseRepository ?? (_publishingHouseRepository = new PublishingHouseRepository(_context)); }
         }
 
         #region save

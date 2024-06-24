@@ -1,4 +1,4 @@
-﻿namespace BooksApp.Application.Models
+﻿namespace BooksApp.Application.Models.User
 {
     public class RegistrationRequestModel
     {

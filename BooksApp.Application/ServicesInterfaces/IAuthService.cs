@@ -1,4 +1,4 @@
-﻿using BooksApp.Domain.Dto;
+﻿using BooksApp.Domain.Dto.User;
 
 namespace BooksApp.Application.ServicesInterfaces
 {
